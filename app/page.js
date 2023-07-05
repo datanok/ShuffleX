@@ -87,7 +87,7 @@ export default function Home() {
 
 
   return (
-    <main className="flex m-6 min-h-screen flex-col gap-4 p-4">
+    <main className="flex m-6 flex-col gap-4 p-4">
      
       {open&&(<PopUp handleClose={handleClose} shuffledList={shuffledList}/>)}
       <ParticlesBg/>
