@@ -124,7 +124,7 @@ export default function Home() {
         </button>
        </div >
        <button
-          onClick={() => addUser()}
+          onClick={() => clearAll()}
           className=" bg-white bg-opacity-10 backdrop-blur-sm border border-gold text-gold hover:text-black hover:font-bold hover:bg-gold  p-3 px-7  rounded-full"
         >
           clear All
