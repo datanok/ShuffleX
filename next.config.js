@@ -16,4 +16,5 @@ module.exports = {
     output:'export',
   assetPrefix: assetPrefix,
   basePath: basePath,
+  target: "serverless",
 }
