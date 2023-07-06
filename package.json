@@ -6,7 +6,6 @@
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "postbuild": "next-on-netlify",
     "lint": "next lint"
   },
   "dependencies": {
