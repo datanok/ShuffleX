@@ -13,7 +13,7 @@ if (isGithubActions) {
 }
 
 module.exports = {
-  // output: "export",
+  output: "export",
   assetPrefix: assetPrefix,
   //basePath: basePath,
   //target: "serverless",
