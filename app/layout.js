@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const dm = DM_Sans({ weight: "400" });
+const dm = DM_Sans({ weight: "400", subsets: ["latin"] });
 export const metadata = {
   title: "ShuffleX",
   description: "dududududududududdudu",
