@@ -3,19 +3,27 @@ import ParticlesBg from "@/components/ParticlesBg";
 import PopUp from "@/components/PopUp";
 import Table from "@/components/Table";
 import { useState } from "react";
-import {ImShuffle} from 'react-icons/im';
-
-
+import { ImShuffle } from "react-icons/im";
 
 export default function Home() {
   const [userlist, setUserlist] = useState([]);
   const [loginlist, setloginlist] = useState([]);
-  const[shuffledList,setShuffledList] = useState([]);
-  const [newUser, SetNewUser] = useState('');
+  const [shuffledList, setShuffledList] = useState([]);
+  const [newUser, SetNewUser] = useState("");
 
-  const [newLogin,setnewLogin] = useState('');
-  const [open,setOpen] = useState(false);
-  let macteam = ['Tanmay','Aaryan','Chinmay','Kedar','Subh','Manas','Dhrumi','Nilima','Anushka'];
+  const [newLogin, setnewLogin] = useState("");
+  const [open, setOpen] = useState(false);
+  let macteam = [
+    "Tanmay",
+    "Aaryan",
+    "Chinmay",
+    "Kedar",
+    "Subh",
+    "Manas",
+    "Dhrumi",
+    "Nilima",
+    "Anushka",
+  ];
   let logins = ["RIL", "Gmail", "Phone", "Guest"];
 
   const shuffleArray = (array) => {
@@ -25,14 +33,13 @@ export default function Home() {
     }
     return array;
   };
-  
-  const handleClose = ()=>{
+
+  const handleClose = () => {
     setOpen(false);
-  }
+  };
 
   // Assign logins to users randomly
   const assignLoginsToUsers = () => {
-
     const shuffledLogins = shuffleArray([...loginlist]); // Create a shuffled copy of login list
     const assignedUsers = userlist.map((user, index) => {
       const loginIndex = index % shuffledLogins.length; // Loop back to the beginning of login list if needed
@@ -47,19 +54,23 @@ export default function Home() {
     return assignedUsers;
   };
 
-  const clearAll = () =>{
+  const clearAll = () => {
     setUserlist([]);
     setloginlist([]);
-  }
+  };
   const addUsers = () => {
     setUserlist(macteam);
   };
 
   const removeItem = (item, dataType) => {
-    if (dataType === 'user') {
-      setUserlist((prevUserList) => prevUserList.filter((user) => user !== item));
-    } else if (dataType === 'login') {
-      setloginlist((prevLoginList) => prevLoginList.filter((login) => login !== item));
+    if (dataType === "user") {
+      setUserlist((prevUserList) =>
+        prevUserList.filter((user) => user !== item)
+      );
+    } else if (dataType === "login") {
+      setloginlist((prevLoginList) =>
+        prevLoginList.filter((login) => login !== item)
+      );
     }
   };
 
@@ -68,94 +79,108 @@ export default function Home() {
   };
 
   const addUser = () => {
-    setUserlist((prevUserList=>[...prevUserList,newUser]))
+    setUserlist((prevUserList) => [...prevUserList, newUser]);
   };
-
 
   const removeUser = (user) => {
-    removeItem(user, 'user');
+    removeItem(user, "user");
   };
   const addLogin = () => {
-    setloginlist((prevLoginList)=>[...prevLoginList,newLogin]);
-  }
+    setloginlist((prevLoginList) => [...prevLoginList, newLogin]);
+  };
 
   const removeLogin = (login) => {
-    removeItem(login, 'login');
+    removeItem(login, "login");
   };
-  
- 
-
 
   return (
-    <main className="flex m-6 flex-col gap-4 p-4">
-     
-      {open&&(<PopUp handleClose={handleClose} shuffledList={shuffledList}/>)}
-      <ParticlesBg/>
-   
+    <main className="flex m-6 flex-col gap-4 flex-1 p-4">
+      {open && <PopUp handleClose={handleClose} shuffledList={shuffledList} />}
+      <ParticlesBg />
+
       <div className="w-full flex justify-between">
-  
         <button
           onClick={() => addUsers()}
-          className=" bg-white bg-opacity-10 backdrop-blur-sm text-sm border  border-gold text-gold hover:text-black hover:font-bold hover:bg-gold p-3 rounded-full"
+          className=" bg-white bg-opacity-10 backdrop-blur-sm text-sm border  border-gold text-gold hover:text-black hover:font-bold hover:bg-gold p-2 rounded-full"
         >
           Add Mac Team
         </button>
         <button
           onClick={() => assignLoginsToUsers()}
-          className="bg-white bg-opacity-10 backdrop-blur-sm border border-gold text-gold hover:text-black hover:font-bold hover:bg-gold  p-3  rounded-full"
+          className="bg-white bg-opacity-10 px-5 text-sm backdrop-blur-sm border border-gold text-gold hover:text-black hover:font-bold hover:bg-gold  p-2  rounded-full"
         >
-          <ImShuffle/>
+          <ImShuffle />
         </button>
         <button
           onClick={() => addLogins()}
-          className="bg-white bg-opacity-10 backdrop-blur-sm border border-gold text-gold hover:text-black hover:font-bold hover:bg-gold  p-3 rounded-full"
+          className="bg-white bg-opacity-10 text-sm backdrop-blur-sm border border-gold text-gold hover:text-black hover:font-bold hover:bg-gold  p-2 rounded-full"
         >
           Add Logins
         </button>
       </div>
-      <div className="flex gap-2 justify-between flex-col md:flex-row">
-       <div className="flex gap-4 w-full md:w-[45%]">
-       <input type="text" onChange={(e)=>SetNewUser(e.target.value)} placeholder="Enter Name" className="bg-white bg-opacity-10 backdrop-blur-sm w-full p-2 text-gray-300 rounded-full"></input>
+      <div className="flex justify-end">
         <button
-          onClick={() => addUser()}
-          className=" bg-white bg-opacity-10 backdrop-blur-sm border border-gold text-gold hover:text-black hover:font-bold hover:bg-gold  p-3 px-7  rounded-full"
-        >
-          Add
-        </button>
-       </div >
-       <button
           onClick={() => clearAll()}
-          className=" bg-white bg-opacity-10 backdrop-blur-sm border border-gold text-gold hover:text-black hover:font-bold hover:bg-gold  p-3 px-7  rounded-full"
+          className="bg-white bg-opacity-10 text-sm backdrop-blur-sm border border-gold text-gold hover:text-black hover:font-bold hover:bg-gold  p-2 rounded-full"
         >
-          clear All
+          Clear All
         </button>
-       <div className="flex gap-4 w-full md:w-[45%]"> <input type="text" onChange={(e)=>setnewLogin(e.target.value)} placeholder="Enter Name" className="bg-white bg-opacity-10 w-full backdrop-blur-sm p-2 text-gray-300 rounded-full"></input>
-        <button
-          onClick={() => addLogin()}
-          className="bg-white bg-opacity-10 backdrop-blur-sm border border-gold text-gold hover:text-black hover:font-bold hover:bg-gold  p-3  px-7 rounded-full"
-        >
-          Add
-        </button></div>
       </div>
       <section className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        {userlist.length ? (
-          <>
-            <Table data={userlist} removeItem={removeUser} dataType="user"/>
-          </>
-        ) : (
-          <h1 className="text-2xl text-center text-gold">
-            No data, Please add something
-          </h1>
-        )}
-        {loginlist.length ? (
-          <>
-            <Table data={loginlist} removeItem={removeLogin} dataType="login"/>
-          </>
-        ) : (
-          <h1 className="text-2xl text-center text-gold">
-            No data, Please add something
-          </h1>
-        )}
+        <div className="flex flex-col gap-4 w-full">
+          <div className="flex gap-2">
+            <input
+              type="text"
+              onChange={(e) => SetNewUser(e.target.value)}
+              placeholder="Enter Name"
+              className=" bg-white bg-opacity-10 backdrop-blur-sm w-full p-2 pl-4 text-gray-300 rounded-full"
+            ></input>
+            <button
+              onClick={() => addUser()}
+              className="bg-white bg-opacity-10 backdrop-blur-sm border border-gold text-gold hover:text-black hover:font-bold hover:bg-gold  p-2  px-7 rounded-full"
+            >
+              Add
+            </button>
+          </div>
+          {userlist.length ? (
+            <>
+              <Table data={userlist} removeItem={removeUser} dataType="user" />
+            </>
+          ) : (
+            <h1 className="text-2xl text-center text-gold">
+              No data, Please add something
+            </h1>
+          )}
+        </div>
+        <div className="flex gap-4 flex-col w-full">
+          <div className="flex gap-2">
+            <input
+              type="text"
+              onChange={(e) => setnewLogin(e.target.value)}
+              placeholder="Enter Login"
+              className="bg-white bg-opacity-10 w-full backdrop-blur-sm  p-2 pl-4 text-gray-300 rounded-full"
+            ></input>
+            <button
+              onClick={() => addLogin()}
+              className="bg-white bg-opacity-10 backdrop-blur-sm border border-gold text-gold hover:text-black hover:font-bold hover:bg-gold  p-2  px-7 rounded-full"
+            >
+              Add
+            </button>
+          </div>
+          {loginlist.length ? (
+            <>
+              <Table
+                data={loginlist}
+                removeItem={removeLogin}
+                dataType="login"
+              />
+            </>
+          ) : (
+            <h1 className="text-2xl text-center text-gold">
+              No data, Please add something
+            </h1>
+          )}
+        </div>
       </section>
     </main>
   );

@@ -4,11 +4,11 @@ import Image from "next/image";
 
 const cointoss = () => {
   return (
-    <div className="flex align-center flex-col">
+    <div className="flex align-center flex-1 flex-col">
       <Image
         src="./cat.gif"
         alt="Shufflex logo"
-        className="object-contain text-center"
+        className="object-contain mx-auto"
         width={300}
         height={300}
         unoptimized={true}

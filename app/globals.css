@@ -16,7 +16,30 @@
   }
 }
 
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #fbe4a6 #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ffffff00;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #fbe4a6;
+  border-radius: 50px;
+}
+
 body {
   color: #000;
-  background-color:#151515;
+  background-color: #151515;
+  font-family: var(--font-ibm-plex-sans);
+  font-smooth: always;
 }

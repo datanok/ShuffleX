@@ -1,11 +1,11 @@
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Inter, IBM_Plex_Sans, DM_Sans } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-
 const inter = Inter({ subsets: ["latin"] });
 
+const dm = DM_Sans({ weight: "400" });
 export const metadata = {
   title: "ShuffleX",
   description: "dududududududududdudu",
@@ -13,13 +13,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-   
+    <html className={dm.className}>
+      <body className="flex flex-col min-h-screen">
         <Navbar />
-      
+
         {children}
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );

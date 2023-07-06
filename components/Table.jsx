@@ -6,18 +6,12 @@ const Table = ({ data, removeItem, dataType }) => {
     <>
       <div className="rounded-full">
         <table className="w-full rounded-lg bg-white bg-opacity-20 backdrop-blur-sm">
-          <thead className=" bg-gray-200 bg-opacity-5 text-white">
+          <thead className=" bg-black bg-opacity-20 text-white">
             <tr className="">
-              <th
-                scope="col"
-                className="px-6 py-3 text-left text-xs font-medium uppercase"
-              >
+              <th scope="col" className="px-6 py-3 text-left  uppercase">
                 Name
               </th>
-              <th
-                scope="col"
-                className="px-6 py-3 text-right text-xs font-medium uppercase "
-              >
+              <th scope="col" className="px-6 py-3 text-right  uppercase ">
                 Action
               </th>
             </tr>
