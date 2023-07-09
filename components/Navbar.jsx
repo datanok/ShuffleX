@@ -2,8 +2,10 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
+  const currPath = usePathname();
   return (
     <nav className=" flex justify-between p-3 bg-white bg-opacity-10 backdrop-blur-sm  text-grayBase border-b-2 border-gold ">
       <Link href="/" className="flex gap-2 flex-center">
@@ -20,12 +22,15 @@ const Navbar = () => {
       </Link>
       <ul className="flex gap-4 mr-4">
         <li className="hover:text-gold px-2">
-          <Link href="/" className="">
+          <Link href="/" className={currPath === "/" ? "text-gold" : ""}>
             <p className="">Shuffler</p>
           </Link>
         </li>
         <li className=" hover:text-gold px-2">
-          <Link href="/cointoss" className="">
+          <Link
+            href="/cointoss"
+            className={currPath === "/cointoss" ? "text-gold" : ""}
+          >
             <p className="">Coin Toss</p>
           </Link>
         </li>

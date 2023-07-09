@@ -20,7 +20,7 @@ const Table = ({ data, removeItem, dataType }) => {
           <tbody className="outline outline-gold shadow-md text-white rounded-lg">
             {data.map((user) => (
               <tr
-                className=" hover:border-b-1 shadow-sm  shadow-gold rounded-lg"
+                className=" text-ellipsis hover:border-b-1 shadow-sm  shadow-gold rounded-lg"
                 key={user}
               >
                 <td className="p-2">{user}</td>

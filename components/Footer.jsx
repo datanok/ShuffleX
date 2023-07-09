@@ -16,6 +16,7 @@ const Footer = () => {
             Created by
             <a
               href="https://www.instagram.com/tanmayok/"
+              target="_blank"
               className="hover:text-gold ml-1"
             >
               Tanmay Patil
@@ -23,17 +24,25 @@ const Footer = () => {
           </span>
           <ul className="flex flex-wrap gap-2 items-center text-sm font-medium text-gray-300">
             <li>
-              <a href="https://www.linkedin.com/in/tanmaypatil25/" className="">
+              <a
+                href="https://www.linkedin.com/in/tanmaypatil25/"
+                target="_blank"
+                className=""
+              >
                 <AiFillLinkedin size={24} className="hover:text-gold " />
               </a>
             </li>
             <li>
-              <a href="https://www.instagram.com/tanmayok/" className="">
+              <a
+                href="https://www.instagram.com/tanmayok/ "
+                target="_blank"
+                className=""
+              >
                 <AiFillInstagram size={24} className="hover:text-gold" />
               </a>
             </li>
             <li>
-              <a href="https://github.com/datanok" className="">
+              <a href="https://github.com/datanok" target="_blank" className="">
                 <AiFillGithub size={24} className="hover:text-gold" />
               </a>
             </li>

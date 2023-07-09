@@ -3,7 +3,10 @@ import ParticlesBg from "@/components/ParticlesBg";
 import PopUp from "@/components/PopUp";
 import Table from "@/components/Table";
 import { useState } from "react";
+import { AiOutlineClear } from "react-icons/ai";
 import { ImShuffle } from "react-icons/im";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Home() {
   const [userlist, setUserlist] = useState([]);
@@ -79,14 +82,61 @@ export default function Home() {
   };
 
   const addUser = () => {
-    setUserlist((prevUserList) => [...prevUserList, newUser]);
+    !newUser
+      ? toast.warning("Name cannot be empty", {
+          style: {
+            backgroundColor: "rgba(45, 46, 51, 0.9)",
+            color: "#FBE4A6",
+            borderLeft: "5px solid #FBE4A6",
+          },
+          autoClose: 1000,
+          hideProgressBar: true,
+          toastId: "name empty",
+        })
+      : setUserlist((prevUserList) => {
+          if (prevUserList.includes(newUser)) {
+            toast.warning("Name already exists", {
+              style: {
+                backgroundColor: "rgba(45, 46, 51, 0.9)",
+                color: "#FBE4A6",
+                borderLeft: "5px solid #FBE4A6",
+              },
+              autoClose: 1000,
+              hideProgressBar: true,
+              toastId: "name exists",
+            });
+            return prevUserList;
+          }
+          SetNewUser("");
+          return [...prevUserList, newUser];
+        });
   };
 
   const removeUser = (user) => {
     removeItem(user, "user");
   };
   const addLogin = () => {
-    setloginlist((prevLoginList) => [...prevLoginList, newLogin]);
+    !newLogin
+      ? toast.warning("Login cannot be empty", {
+          style: {
+            backgroundColor: "rgba(45, 46, 51, 0.9)",
+            color: "#FBE4A6",
+            borderLeft: "5px solid #FBE4A6",
+          },
+          autoClose: 1000,
+          hideProgressBar: true,
+          toastId: "empty",
+        })
+      : setloginlist((prevLoginList) => [...prevLoginList, newLogin]);
+    setnewLogin("");
+  };
+
+  //submit on enter
+  const handleUserkeypress = (event) => {
+    if (event.key === "Enter") addUser();
+  };
+  const handleLoginkeypress = (event) => {
+    if (event.key === "Enter") addLogin();
   };
 
   const removeLogin = (login) => {
@@ -94,7 +144,8 @@ export default function Home() {
   };
 
   return (
-    <main className="flex m-1 md:m-6 flex-col gap-4 flex-1 p-4">
+    <main className="flex m-1 md:m-6 flex-col gap-4 flex-1 p-2 md:p-4">
+      <ToastContainer />
       {open && <PopUp handleClose={handleClose} shuffledList={shuffledList} />}
       <ParticlesBg />
 
@@ -119,11 +170,8 @@ export default function Home() {
         </button>
       </div>
       <div className="flex justify-end">
-        <button
-          onClick={() => clearAll()}
-          className="bg-white bg-opacity-10 text-sm backdrop-blur-sm border border-gold text-gold hover:text-black hover:font-bold hover:bg-gold  p-2 rounded-full"
-        >
-          Clear All
+        <button onClick={() => clearAll()} className="text-gold">
+          <AiOutlineClear size={30} />
         </button>
       </div>
       <section className="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -131,8 +179,11 @@ export default function Home() {
           <div className="flex gap-2">
             <input
               type="text"
-              onChange={(e) => SetNewUser(e.target.value)}
+              onChange={(e) => SetNewUser(e.target.value.trim())}
               placeholder="Enter Name"
+              value={newUser}
+              maxLength={50}
+              onKeyDown={handleUserkeypress}
               className=" bg-white bg-opacity-10 backdrop-blur-sm w-full p-2 pl-4 text-gray-300 rounded-full"
             ></input>
             <button
@@ -147,7 +198,7 @@ export default function Home() {
               <Table data={userlist} removeItem={removeUser} dataType="user" />
             </>
           ) : (
-            <h1 className="text-2xl text-center text-gold">
+            <h1 className="text-xl text-center text-gold">
               No data, Please add something
             </h1>
           )}
@@ -156,8 +207,11 @@ export default function Home() {
           <div className="flex gap-2">
             <input
               type="text"
-              onChange={(e) => setnewLogin(e.target.value)}
+              onChange={(e) => setnewLogin(e.target.value.trim())}
+              value={newLogin}
               placeholder="Enter Login"
+              onKeyDown={handleLoginkeypress}
+              maxLength={50}
               className="bg-white bg-opacity-10 w-full backdrop-blur-sm  p-2 pl-4 text-gray-300 rounded-full"
             ></input>
             <button
@@ -176,7 +230,7 @@ export default function Home() {
               />
             </>
           ) : (
-            <h1 className="text-2xl text-center text-gold">
+            <h1 className="text-xl text-center text-gold">
               No data, Please add something
             </h1>
           )}

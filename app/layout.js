@@ -1,9 +1,7 @@
 import "./globals.css";
-import { Inter, IBM_Plex_Sans, DM_Sans } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
-const inter = Inter({ subsets: ["latin"] });
 
 const dm = DM_Sans({ weight: "400", subsets: ["latin"] });
 export const metadata = {

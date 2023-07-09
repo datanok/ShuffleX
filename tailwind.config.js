@@ -15,8 +15,8 @@ module.exports = {
       colors: {
         gold: "#FBE4A6",
         grayBase: "rgba(206,206,206,255)",
-        grayCard:"rgba(232,232,232,255)",
-        blackPrimary:"rgba(10,10,10,255)"
+        grayCard: "rgba(232,232,232,255)",
+        blackPrimary: "rgba(10,10,10,255)",
       },
     },
   },
